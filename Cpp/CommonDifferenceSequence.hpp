@@ -4,8 +4,10 @@
 #include <vector>
 #include <utility>
 #include <algorithm>
+#include <type_traits>
 
-template<typename T> class CommonDifferenceSequence {
+template<typename T = int, std::enable_if_t<std::is_arithmetic<T>::value, std::nullptr_t> = nullptr>
+class CommonDifferenceSequence {
 private:
 	T FirstTerm, CommonDifference;
 public:

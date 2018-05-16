@@ -2,11 +2,13 @@
 #ifndef __COMMONRATIOSEQUENCE_HPP__
 #define __COMMONRATIOSEQUENCE_HPP__
 #include <vector>
-#include <utility>
 #include <algorithm>
+#include <utility>
 #include <numeric>
+#include <type_traits>
 
-template<typename T> class CommonRatioSequence {
+template<typename T = int, std::enable_if_t<std::is_arithmetic<T>::value, std::nullptr_t> = nullptr>
+class CommonRatioSequence {
 private:
 	T CommonRatio;
 	std::vector<T> arr;
@@ -34,4 +36,5 @@ public:
 		else return{ this->arr.begin(), this->arr.begin() + LastTermNum };
 	}
 };
+
 #endif
